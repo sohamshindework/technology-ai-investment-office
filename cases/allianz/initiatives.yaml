@@ -1,0 +1,224 @@
+# All economics, coverage, legal-design answers and pilot states are illustrative, not Allianz data or approvals.
+defaults:
+  fail_benefit_share: 0.3
+  ramp_years: 0.75
+  platform_capex: 0
+  ai_act: &internal_ai
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: true
+initiatives:
+  - id: DATA_TRACE
+    name: Extend claims data, consent and decision-trace integration
+    function: Claims technology
+    status: new
+    description: Connect policy, claims and service records for approved team workflows, with access control, provenance and audit traces. This is incremental integration within the modeled unit, not a claim that Allianz lacks a group data platform.
+    public_basis: Allianz describes AI governance and traceability across claims and customer processes; local integration scope is hypothetical.
+    sources: [A5, A7]
+    site_options: [2, 4, 6]
+    capex_per_site: [110, 175, 270]
+    opex_per_site: [25, 40, 65]
+    benefit_per_site: [35, 65, 110]
+    months_to_value: [2, 4, 7]
+    p_success: 0.88
+    fte_per_site: 0.22
+    central_fte: 0.8
+    kpi: Approved record-linkage coverage (%)
+    ai_act:
+      <<: *internal_ai
+      uses_ai: false
+    assumption_notes: Avoided reconciliation and rework only; downstream benefits are booked to their own candidate, not counted here.
+  - id: CLAIM_DOC
+    name: Extend document extraction and validation to claims teams
+    function: Claims operations
+    status: scale
+    description: Apply existing-style document extraction and policy-field checks to additional eligible German P&C claims teams; route uncertain documents to handlers.
+    public_basis: Allianz documents OCR and AI validation in simple P&C claims, including German pet insurance; this proposed team coverage is not asserted to exist already.
+    sources: [A3]
+    site_options: [2, 4, 6]
+    capex_per_site: [120, 200, 320]
+    opex_per_site: [40, 65, 105]
+    benefit_per_site: [140, 230, 370]
+    months_to_value: [2, 4, 7]
+    p_success: 0.82
+    fte_per_site: 0.22
+    central_fte: 0.8
+    kpi: Manual document touches per claim
+    requires:
+      - {initiative: DATA_TRACE, mode: sites, baseline_sites: 2}
+    assumption_notes: Retained handling-time value must be net of existing OCR capability and cannot overlap with copilot/document savings.
+  - id: CLAIM_COPILOT
+    name: Extend handler copilot to eligible P&C claims teams
+    function: Claims operations
+    status: scale
+    description: Provide sourced claim summaries, policy lookup and draft responses for handlers, who retain claim and payment authority.
+    public_basis: Insurance Copilot launched for Austrian motor claims and expanded to property claims; German P&C unit rollout here is hypothetical.
+    sources: [A1]
+    site_options: [2, 4, 6]
+    capex_per_site: [150, 245, 390]
+    opex_per_site: [55, 85, 135]
+    benefit_per_site: [175, 290, 460]
+    months_to_value: [3, 5, 8]
+    p_success: 0.76
+    fte_per_site: 0.28
+    central_fte: 1.0
+    kpi: Average claim handling time (hours)
+    requires:
+      - {initiative: DATA_TRACE, mode: sites, baseline_sites: 2}
+    ai_act:
+      <<: *internal_ai
+      uses_gpai_model: true
+      generates_synthetic_content: true
+    assumption_notes: Count only incremental handler time after existing copilot use; require quality review and human final decisions.
+  - id: CLAIM_TRIAGE
+    name: Prioritize incoming claims for human allocation
+    function: Claims operations
+    status: new
+    description: Score claim complexity and urgency for team-level queue routing; do not decide coverage, eligibility or payout.
+    public_basis: Hypothetical local workflow. Allianz publishes claims automation examples, not this team's proposed triage system.
+    sources: [A3]
+    site_options: [2, 4, 6]
+    capex_per_site: [105, 170, 275]
+    opex_per_site: [35, 55, 90]
+    benefit_per_site: [100, 175, 285]
+    months_to_value: [3, 5, 8]
+    p_success: 0.72
+    fte_per_site: 0.2
+    central_fte: 0.8
+    kpi: Time to first human review (hours)
+    requires:
+      - {initiative: DATA_TRACE, mode: sites, baseline_sites: 2}
+    assumption_notes: Benefit is queue and escalation efficiency, excluding payout or reserve effects.
+  - id: FRAUD_ASSIST
+    name: Pilot explainable fraud referral assistance
+    function: Claims integrity
+    status: new
+    description: Surface anomalies and supporting evidence to trained investigators; no automatic fraud finding, denial or customer sanction.
+    public_basis: Allianz's Nemo example includes a fraud-check agent, while this German investigation workflow remains hypothetical.
+    sources: [A4]
+    site_options: [2, 4]
+    capex_per_site: [170, 280, 450]
+    opex_per_site: [65, 100, 160]
+    benefit_per_site: [140, 250, 410]
+    months_to_value: [4, 7, 11]
+    p_success: 0.62
+    fte_per_site: 0.3
+    central_fte: 1.0
+    kpi: Investigator-confirmed referral precision (%)
+    requires:
+      - {initiative: DATA_TRACE, mode: sites, baseline_sites: 2}
+    pilot_gate:
+      approved: false
+      min_success_probability: 0.75
+      evidence: Local validation, fairness and false-positive evidence are not supplied; threshold is hypothetical.
+    assumption_notes: Do not value avoided fraud loss without a verified baseline and attribution; economics here are illustrative review-workload savings only.
+  - id: SERVICE_KNOWLEDGE
+    name: Extend employee knowledge assistance to service teams
+    function: Customer service
+    status: scale
+    description: Extend a sourced internal knowledge-assistant pattern to additional eligible service teams, with citation checking and agent escalation.
+    public_basis: Allianz reports EKA live in German entities including Allianz Versicherung; the modeled incremental teams are not claimed to be unserved.
+    sources: [A2]
+    site_options: [2, 4, 6]
+    capex_per_site: [90, 155, 250]
+    opex_per_site: [35, 55, 90]
+    benefit_per_site: [115, 195, 315]
+    months_to_value: [2, 3, 6]
+    p_success: 0.82
+    fte_per_site: 0.17
+    central_fte: 0.7
+    kpi: Customer response time (minutes)
+    ai_act:
+      <<: *internal_ai
+      uses_gpai_model: true
+    assumption_notes: Incremental service handling value must exclude benefits already realized by existing EKA usage.
+  - id: SERVICE_REPLY
+    name: Draft cited responses for complex customer inquiries
+    function: Customer service
+    status: new
+    description: Suggest policy-grounded responses for human agents, with explicit approval before messages reach customers.
+    public_basis: Hypothetical workflow extension of Allianz's documented internal assistants and secure AI platforms.
+    sources: [A2, A7]
+    site_options: [2, 4, 6]
+    capex_per_site: [95, 165, 270]
+    opex_per_site: [45, 70, 110]
+    benefit_per_site: [100, 175, 290]
+    months_to_value: [3, 5, 8]
+    p_success: 0.7
+    fte_per_site: 0.2
+    central_fte: 0.8
+    kpi: First-response time (minutes)
+    requires:
+      - {initiative: SERVICE_KNOWLEDGE, mode: any}
+    ai_act:
+      <<: *internal_ai
+      uses_gpai_model: true
+      generates_synthetic_content: true
+    assumption_notes: Separate from knowledge-search benefit; include agent editing and quality-control costs.
+  - id: COMPLAINT_ROUTE
+    name: Route complaints and vulnerable-customer cases to specialists
+    function: Customer service
+    status: new
+    description: Flag service complaints and urgency for human escalation; preserve existing complaint timelines and case ownership.
+    public_basis: Allianz reports formal claims complaint processes and customer feedback monitoring; this routing investment is hypothetical.
+    sources: [A5]
+    site_options: [2, 4, 6]
+    capex_per_site: [75, 130, 215]
+    opex_per_site: [25, 40, 65]
+    benefit_per_site: [75, 130, 220]
+    months_to_value: [2, 4, 7]
+    p_success: 0.74
+    fte_per_site: 0.15
+    central_fte: 0.6
+    kpi: Complaint escalation within policy time (%)
+    assumption_notes: Benefits are avoided rework and handling effort, not monetized customer trust or complaint suppression.
+  - id: SURGE_PREP
+    name: Prepare catastrophe-surge claim packets for handlers
+    function: Claims operations
+    status: new
+    description: Aggregate evidence and draft summaries during P&C surge events; a human validates coverage and every payout or denial.
+    public_basis: Australia's Nemo provides a bounded food-spoilage example; this German P&C surge workflow is a separate hypothetical adaptation.
+    sources: [A4]
+    site_options: [2, 4]
+    capex_per_site: [155, 255, 420]
+    opex_per_site: [65, 100, 160]
+    benefit_per_site: [105, 200, 335]
+    months_to_value: [4, 7, 11]
+    p_success: 0.63
+    fte_per_site: 0.29
+    central_fte: 1.0
+    kpi: Surge claim packet preparation time (hours)
+    requires:
+      - {initiative: DATA_TRACE, mode: sites, baseline_sites: 2}
+    pilot_gate:
+      approved: false
+      min_success_probability: 0.75
+      evidence: German product, event data and human-control pilot evidence are not supplied.
+    assumption_notes: No claim is made that the Australian time reduction transfers to German P&C cases.
+  - id: QUALITY_AUDIT
+    name: Sample claim and service outputs for quality review
+    function: Quality and governance
+    status: new
+    description: Compare decisions and messages with policies, escalation records and error patterns for human quality teams.
+    public_basis: Allianz describes human oversight and dashboards comparing AI outputs with outcomes; the proposed local review capacity is hypothetical.
+    sources: [A3, A6]
+    site_options: [2, 4, 6]
+    capex_per_site: [100, 165, 265]
+    opex_per_site: [30, 50, 80]
+    benefit_per_site: [75, 135, 225]
+    months_to_value: [2, 4, 7]
+    p_success: 0.78
+    fte_per_site: 0.19
+    central_fte: 0.8
+    kpi: Claims quality exceptions per 100 reviews
+    assumption_notes: Value only verified avoided rework; fairness and consumer-protection benefits remain nonmonetized.

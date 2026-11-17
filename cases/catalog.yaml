@@ -1,0 +1,17 @@
+schema_version: 1
+cases:
+  - id: dhl_supply_chain
+    folder: dhl_supply_chain
+    industry_id: logistics
+    admission: implemented
+    business_review: pending
+  - id: allianz
+    folder: allianz
+    industry_id: insurance
+    admission: implemented
+    business_review: pending
+  - id: bmw_group
+    folder: bmw_group
+    industry_id: automotive
+    admission: implemented
+    business_review: pending

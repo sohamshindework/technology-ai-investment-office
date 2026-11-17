@@ -1,0 +1,37 @@
+id: template
+company: Your company
+unit: Example division
+title: Your investment decision
+question: 'Under a fixed capex envelope and limited implementation capacity, which
+  initiatives should be scaled, graduated or started, in what order, and with which
+  compliance gates?
+
+  '
+disclaimer: Blank illustrative company template. All inputs are placeholders and hypothetical.
+model:
+  currency_unit: EUR k
+  horizon_years: 6
+  rollout_years: 2
+  discount_rate: 0.09
+  budget_by_year:
+  - 5000
+  - 5000
+  fte_capacity_by_year:
+  - 10
+  - 10
+  risk_aversion: 0.5
+  volume_factor:
+  - 0.9
+  - 1.0
+  - 1.1
+  n_samples: 2000
+  seed: 1
+  max_sites_per_quarter: 5
+compliance:
+  high_risk_capex: 400
+  high_risk_delay_months: 6
+  product_route_capex: 100
+  transparency_capex: 30
+  works_council_delay_months: 3
+facts: []
+sources: {}

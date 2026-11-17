@@ -1,0 +1,34 @@
+schema_version: 1
+claims:
+  - id: copilot
+    text: Insurance Copilot was launched for Austrian motor claims in 2024 and later expanded to property claims; modeled German coverage is a hypothetical incremental decision.
+    source_ids: [A1]
+  - id: eka
+    text: Allianz reports EKA live in German entities including Allianz Versicherung, so an extension is compared with existing local coverage.
+    source_ids: [A2]
+  - id: simple_claims
+    text: Allianz reports document extraction and AI checks in simple P&C claims and a German pet-insurance automation example; these are not this model's measured baseline.
+    source_ids: [A3]
+  - id: human_control
+    text: In the Australian Nemo example, AI prepares checks and a human makes the payment decision.
+    source_ids: [A4]
+  - id: governance
+    text: EIOPA's opinion describes risk-based AI governance and supervision under insurance-sector legislation.
+    source_ids: [A6]
+assumptions:
+  - id: economics
+    rationale: All ten cost, benefit, success and timing distributions are illustrative ranges; no operating-unit volume/cost evidence was supplied.
+    owner: Unknown; local finance and operations owners required
+    status: hypothetical
+  - id: capital
+    rationale: The EUR 11m three-year envelope and 4 team-workflow launches per quarter are modeling constraints, not Allianz approvals.
+    owner: Unknown; portfolio and delivery owners required
+    status: hypothetical
+  - id: benefit_capture
+    rationale: Claim-time and service-time savings require attributable, retained cash value after existing tools, quality checks and overlap.
+    owner: Unknown; local finance owner required
+    status: hypothetical
+  - id: oversight
+    rationale: Human payout/denial authority and proposed controls require validation in each actual workflow; current questionnaire is preliminary.
+    owner: Unknown; legal, privacy and model-risk owners required
+    status: hypothetical

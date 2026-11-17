@@ -1,0 +1,25 @@
+name: Validate Technology & AI Investment Strategy
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip check
+      - run: python -m ruff check .
+      - run: python -m pytest -q --cov=invest_engine --cov=frontend --cov-report=term-missing
+      - run: python scripts/validate_case.py cases/dhl_supply_chain
+      - run: python scripts/validate_case.py cases/allianz
+      - run: python scripts/validate_case.py cases/bmw_group
+      - run: python scripts/run_case.py cases/dhl_supply_chain > /dev/null
+      - run: python scripts/run_case.py cases/allianz > /dev/null
+      - run: python scripts/run_case.py cases/bmw_group > /dev/null
+      - run: python -m pip_audit --disable-pip --no-deps -r requirements-lock.txt
+      - run: python scripts/check_hygiene.py

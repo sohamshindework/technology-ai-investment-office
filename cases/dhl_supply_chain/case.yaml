@@ -1,0 +1,136 @@
+id: dhl_supply_chain
+company: DHL Supply Chain
+unit: Contract logistics division
+title: DHL Supply Chain — Logistics & Automation
+question: 'DHL Supply Chain already runs robotics, digital solutions and analytics
+  at scale. Under a fixed (hypothetical) three-year capex envelope and a limited implementation
+  team, which proven capabilities should be rolled out to more sites, which pilots
+  should move into live operations, and which new initiatives are worth starting,
+  in what order, and with which EU AI Act and works-council gates?
+
+  '
+disclaimer: Independent, outside-in case study using public information and explicitly
+  hypothetical investment assumptions for DHL Supply Chain only. Not a DHL Group-wide
+  allocation. Not affiliated with or endorsed by DHL Supply Chain or DHL Group.
+model:
+  currency_unit: EUR k
+  horizon_years: 8
+  rollout_years: 3
+  discount_rate: 0.09
+  budget_by_year:
+  - 22000
+  - 22000
+  - 16000
+  fte_capacity_by_year:
+  - 45
+  - 45
+  - 35
+  risk_aversion: 0.5
+  volume_factor:
+  - 0.85
+  - 1.0
+  - 1.1
+  n_samples: 4000
+  seed: 2026
+  max_sites_per_quarter: 8
+compliance:
+  high_risk_capex: 400
+  high_risk_delay_months: 6
+  product_route_capex: 100
+  transparency_capex: 30
+  works_council_delay_months: 3
+facts:
+- label: Supply Chain revenue 2025
+  value: EUR 17,778m (+0.5%; +3.7% excl. currency)
+  source: S1
+- label: Supply Chain EBIT 2025
+  value: EUR 1,161m (+8.7%); return on sales 6.5%
+  source: S1
+- label: Stated earnings drivers
+  value: Productivity improvements from digitalisation, automation and standardisation,
+    plus new customers
+  source: S1
+- label: Revenue by region 2025
+  value: EMEA EUR 7,952m; Americas EUR 7,394m; Asia Pacific EUR 2,458m
+  source: S1
+- label: New contract volume 2025
+  value: EUR 7.5bn
+  source: S1
+- label: Demand uncertainty
+  value: Customers temporarily reluctant to sign new contracts amid US trade/tariff
+    uncertainty
+  source: S1
+- label: Market position
+  value: Global contract-logistics leader, 6.1% share (2024); >55 countries
+  source: S2
+- label: Technology footprint (AR 2025)
+  value: Digital solutions at >95% of locations; ~8,000 collaborative robots; ~52,000
+    smart wearables
+  source: S2
+- label: Robots (Nov 2026)
+  value: '>9,000 robots; >1.5bn robotic picks; 10m case unloads with Stretch'
+  source: S3
+- label: Analytics and AI
+  value: Advanced analytics/AI solutions deployed >1,400 times, >500 of them in 2026;
+    >2.5m minutes of conversational AI agent interactions
+  source: S3
+- label: Pilots and live AI (Nov 2026)
+  value: AI orchestration live after proof of concept; adaptive AI robotics in pilot;
+    intelligent workflow (AMRs + packaging automation + WMS) in testing
+  source: S3
+- label: Robotics integration layer
+  value: Live at 30 sites; plan for >100 sites within three years; integrations up
+    to 12x faster
+  source: S4
+- label: H1 2026
+  value: Revenue EUR 9,223m (+7.7%); EBIT EUR 581m
+  source: S5
+- label: EU AI Act timing
+  value: Annex III high-risk obligations apply from 2 Dec 2027 (AI Omnibus, Reg. (EU)
+    2026/1744)
+  source: S7
+sources:
+  S1:
+    title: 'DHL Group 2025 Annual Report: Supply Chain division (report on economic
+      position)'
+    publisher: DHL Group
+    url: https://reporting-hub.group.dhl.com/2025-fy/en/combined-management-report/report-on-economic-position/supply-chain-division-1/
+    accessed: '2026-11-14'
+  S2:
+    title: 'DHL Group 2025 Annual Report: Supply Chain division (general information)'
+    publisher: DHL Group
+    url: https://reporting-hub.group.dhl.com/2025-fy/en/combined-management-report/general-information/supply-chain-division/
+    accessed: '2026-11-14'
+  S3:
+    title: DHL Supply Chain doubles down on digitalization strategy, pilots adaptive
+      robotics and AI orchestration (press release, 9 Nov 2026)
+    publisher: DHL
+    url: https://www.dhl.com/us-en/home/press/press-archive/2026/dhl-supply-chain-doubles-down-on-digitalization-strategy-pilots-adaptive-robotics-and-ai-orchestration.html
+    accessed: '2026-11-14'
+  S4:
+    title: DHL Supply Chain accelerates automation deployments with SVT Robotics SOFTBOT
+      platform (press release, 16 Mar 2026)
+    publisher: DHL
+    url: https://www.dhl.com/cz-en/home/press/press-archive/2026/dhl-supply-chain-accelerates-automation-deployments-with-svt-robotics-softbot-platform.html
+    accessed: '2026-11-14'
+  S5:
+    title: 'DHL Group Q2 2026 interim report: results of operations'
+    publisher: DHL Group
+    url: https://reporting-hub.group.dhl.com/2026-q2/en/interim-group-management-report/report-on-economic-position/results-of-operations/
+    accessed: '2026-11-14'
+  S7:
+    title: AI Act implementation timeline, incorporating enacted Digital Omnibus on
+      AI
+    publisher: European Commission
+    url: https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act
+    accessed: '2026-11-14'
+  S8:
+    title: Regulation (EU) 2024/1689, Annex III and Article 6
+    publisher: European Union
+    url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng
+    accessed: '2026-11-14'
+  S9:
+    title: Regulation (EU) 2026/1744, enacted amendment
+    publisher: European Union
+    url: https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng
+    accessed: '2026-11-14'

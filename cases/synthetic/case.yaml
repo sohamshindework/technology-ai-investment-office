@@ -1,0 +1,28 @@
+id: synthetic
+company: Synthetic Company
+unit: Test division
+title: Synthetic independent portfolio
+question: 'Under a fixed capex envelope and limited implementation capacity, which
+  initiatives should be scaled, graduated or started, in what order, and with which
+  compliance gates?
+
+  '
+disclaimer: Synthetic test case. No real company, public facts or observed results.
+  All inputs hypothetical.
+model:
+  currency_unit: EUR k
+  horizon_years: 3
+  rollout_years: 1
+  discount_rate: 0.1
+  budget_by_year:
+  - 180
+  fte_capacity_by_year:
+  - 10
+  risk_aversion: 0
+  volume_factor: 1
+  n_samples: 100
+  seed: 1
+  max_sites_per_quarter: 5
+compliance: {}
+facts: []
+sources: {}

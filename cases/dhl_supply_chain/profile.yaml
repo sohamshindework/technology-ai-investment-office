@@ -1,0 +1,69 @@
+schema_version: 1
+case_id: dhl_supply_chain
+industry_id: logistics
+scope:
+  company: DHL Supply Chain
+  operating_unit: Contract logistics division
+  geography: Illustrative eligible Supply Chain sites; no approved site list
+  process: Warehouse automation and operations
+  beneficiary: DHL Supply Chain, subject to customer contract sharing
+  exclusions:
+    - DHL Group-wide capital allocation
+    - Freight, Express and Post divisions
+as_of: '2026-11-14'
+deployment_unit:
+  singular: site-initiative deployment
+  plural: site-initiative deployments
+  definition: One initiative rolled out at one eligible warehouse; multiple initiatives may share a warehouse.
+  coverage_noun: sites
+accent:
+  primary: '#276E65'
+  support: '#76A99E'
+kpis:
+  - id: pick_productivity
+    initiative_ids: [AMR_PICK]
+    label: Units picked per labor hour
+    unit: count
+    direction: higher
+    frequency: monthly
+    aggregation: ratio_of_totals
+    numerator: units_picked
+    denominator: labor_hours
+    provenance: hypothetical_assumption
+    source_ids: [S2, S3]
+    owner: Unknown; local operations owner required
+    baseline: null
+    target: null
+  - id: integration_lead_time
+    initiative_ids: [INT_LAYER]
+    label: Automation integration lead time
+    unit: days
+    direction: lower
+    frequency: quarterly
+    aggregation: mean
+    provenance: hypothetical_assumption
+    source_ids: [S4]
+    owner: Unknown; integration owner required
+    baseline: null
+    target: null
+governance:
+  profile_id: workplace_v1
+  profile_version: 1
+  coverage_review: design_reviewed
+  domains: [workplace, privacy, product_safety, human_oversight]
+  approval_points:
+    - Validate site eligibility and customer-contract benefit ownership.
+    - Complete workplace, privacy and robotics safety review before deployment.
+views:
+  portfolio: [contribution, baseline_waterfall]
+  scenarios: [capital_frontier, npv_distribution, scenario_delta]
+  delivery: [quarterly_rollout, quarterly_capacity, planned_benefits]
+decision_notes:
+  rationale: Review incremental integration, AMR picking and orchestration value under limited launch capacity.
+  risks:
+    - Labor benefits may overlap and may be shared with customers.
+    - Site eligibility and delivery slots require owner validation.
+  approval_points:
+    - Confirm retained cash benefits and deployment owners.
+    - Complete applicable safety, privacy and workforce reviews.
+  source_ids: [S2, S3, S4]

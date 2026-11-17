@@ -1,0 +1,52 @@
+defaults:
+  fail_benefit_share: 0.3
+  ramp_years: 1.0
+  platform_capex: 0
+  ai_act:
+    uses_ai: true
+initiatives:
+- id: YOUR_INITIATIVE
+  library_ref: L-OPS-08
+  name: Replace with an investment opportunity
+  function: Supply chain
+  status: new
+  description: Describe the proposed investment and intended purpose.
+  public_basis: Add reviewed public evidence if available.
+  sources: []
+  site_options:
+  - 5
+  - 10
+  capex_per_site:
+  - 50
+  - 80
+  - 120
+  opex_per_site:
+  - 10
+  - 20
+  - 30
+  benefit_per_site:
+  - 60
+  - 100
+  - 160
+  months_to_value:
+  - 2
+  - 3
+  - 6
+  p_success: 0.85
+  fte_per_site: 0.2
+  central_fte: 1.0
+  kpi: Forecast error
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false

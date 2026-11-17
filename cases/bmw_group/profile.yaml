@@ -1,0 +1,130 @@
+schema_version: 1
+case_id: bmw_group
+industry_id: automotive
+scope:
+  company: BMW Group
+  operating_unit: Hypothetical eligible German vehicle-production line workflows
+  geography: Germany; representative eligible workflows, not the entire production network
+  process: Assembly, paint, maintenance, quality and line planning
+  beneficiary: Hypothetical production operating unit, subject to finance and plant-owner confirmation
+  exclusions:
+    - BMW Group-wide capital allocation
+    - Autonomous safety-critical machine control
+    - Product-release decisions without human authority
+    - Production-network or machine-hour optimization
+as_of: '2026-11-14'
+deployment_unit:
+  singular: line-workflow deployment
+  plural: line-workflow deployments
+  definition: One initiative introduced to one eligible production-line workflow; multiple initiatives may share a line and no plant count is implied.
+  coverage_noun: line workflows
+accent:
+  primary: '#496E83'
+  support: '#829AA8'
+kpis:
+  - id: downtime
+    initiative_ids: [PRED_MAINT]
+    label: Unplanned conveyor downtime
+    unit: hours
+    direction: lower
+    frequency: monthly
+    aggregation: sum
+    provenance: hypothetical_assumption
+    source_ids: [B2]
+    owner: Unknown; plant maintenance owner required
+    baseline: null
+    target: null
+  - id: first_pass_yield
+    initiative_ids: [VISION_QA, DEFECT_TRACE]
+    label: First-pass quality yield
+    unit: percent_0_100
+    direction: higher
+    frequency: monthly
+    aggregation: ratio_of_totals
+    numerator: accepted_first_pass
+    denominator: inspected_vehicles
+    provenance: hypothetical_assumption
+    source_ids: [B1, B7]
+    owner: Unknown; plant quality owner required
+    baseline: null
+    target: null
+  - id: rework_cost
+    initiative_ids: [VISION_QA, PAINT_QA]
+    label: Direct rework cost per affected vehicle
+    unit: EUR/vehicle
+    direction: lower
+    frequency: monthly
+    aggregation: ratio_of_totals
+    numerator: direct_rework_cost_eur
+    denominator: affected_vehicles
+    provenance: hypothetical_assumption
+    source_ids: [B3, B6]
+    owner: Unknown; quality finance owner required
+    baseline: null
+    target: null
+  - id: availability
+    initiative_ids: [PRED_MAINT]
+    label: Conveyor equipment availability
+    unit: percent_0_100
+    direction: higher
+    frequency: monthly
+    aggregation: ratio_of_totals
+    numerator: available_scheduled_minutes
+    denominator: scheduled_minutes
+    provenance: hypothetical_assumption
+    source_ids: [B2]
+    owner: Unknown; maintenance owner required
+    baseline: null
+    target: null
+  - id: planning_cycle
+    initiative_ids: [PLAN_TWIN, SCHED_ANALYTICS]
+    label: Line-change planning cycle
+    unit: days
+    direction: lower
+    frequency: quarterly
+    aggregation: mean
+    provenance: hypothetical_assumption
+    source_ids: [B4]
+    owner: Unknown; production planning owner required
+    baseline: null
+    target: null
+  - id: energy_intensity
+    initiative_ids: [ENERGY_ANALYTICS]
+    label: Process energy per vehicle
+    unit: kWh/vehicle
+    direction: lower
+    frequency: monthly
+    aggregation: ratio_of_totals
+    numerator: metered_process_kwh
+    denominator: completed_vehicles
+    provenance: hypothetical_assumption
+    source_ids: [B6]
+    owner: Unknown; plant energy owner required
+    baseline: null
+    target: null
+governance:
+  profile_id: manufacturing_operations_v1
+  profile_version: 1
+  coverage_review: design_reviewed
+  domains: [machine_safety, quality, workplace, privacy, human_oversight, cybersecurity, vendor_assurance]
+  approval_points:
+    - Plant engineering and production owners confirm eligible workflows, change windows and machine-safety boundaries.
+    - Quality owners validate defect baselines, inspection accuracy and human product-release authority.
+    - Workforce and privacy owners review monitoring, training and consultation before deployment.
+    - Industrial cybersecurity and vendor owners approve data paths and operational resilience.
+    - Pilot-gated automation and paint candidates need local evidence and explicit committee approval.
+views:
+  portfolio: [contribution, baseline_waterfall, function_value, manufacturing_kpi_scorecard]
+  scenarios: [capital_frontier, npv_distribution, scenario_delta]
+  delivery: [quarterly_rollout, quarterly_capacity, planned_benefits]
+decision_notes:
+  rationale: Prioritize attributable maintenance, quality and planning value on eligible lines after confirming current BMW capability coverage.
+  risks:
+    - Public examples do not establish this hypothetical unit's existing tool coverage, remaining defect pool or downtime cost.
+    - Downtime, scheduling and diagnosis savings overlap unless separate event and labor pools are measured.
+    - Quality, machine-safety, workforce and industrial cyber reviews are required before deployment.
+  approval_points:
+    - Confirm line eligibility, current capability coverage, downtime/defect baselines and retained cash benefit.
+    - Validate mutually exclusive event, rework, labor and energy benefit pools with plant finance.
+    - Approve engineering capacity, pilot evidence, safety, quality, workforce and cyber gates.
+  source_ids: [B1, B2, B3, B4, B5, B7]

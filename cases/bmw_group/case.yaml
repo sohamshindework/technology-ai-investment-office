@@ -1,0 +1,84 @@
+id: bmw_group
+company: BMW Group
+unit: Hypothetical eligible German vehicle-production line workflows
+title: BMW Group — Automotive & Manufacturing
+question: >-
+  Across a representative, hypothetical set of eligible German vehicle-production
+  lines, which incremental quality, maintenance, planning and data investments
+  merit funding over three years within limited capital and engineering capacity?
+disclaimer: >-
+  Independent, outside-in case study. Line eligibility, existing coverage, budget,
+  financial ranges, success rates and recommendations are hypothetical, not BMW
+  Group plans or forecasts. BMW already uses many of these technology patterns.
+  The project is not affiliated with or endorsed by BMW Group.
+model:
+  currency_unit: EUR k
+  horizon_years: 8
+  rollout_years: 3
+  discount_rate: 0.10
+  budget_by_year: [3200, 3000, 2400]
+  fte_capacity_by_year: [10, 10, 8]
+  risk_aversion: 0.55
+  volume_factor: [0.82, 1.0, 1.1]
+  n_samples: 3000
+  seed: 2028
+  max_sites_per_quarter: 3
+  deployment_delay_quarters: 1
+compliance:
+  high_risk_capex: 350
+  high_risk_delay_months: 6
+  product_route_capex: 100
+  transparency_capex: 25
+  works_council_delay_months: 3
+facts:
+  - label: Existing production AI
+    value: BMW Group describes hundreds of AI use cases in series production and its AIQX quality platform.
+    source: B1
+  - label: Existing predictive maintenance
+    value: BMW reports AI-supported conveyor monitoring at Plant Regensburg and approximately 500 minutes of annual assembly disruption avoided there.
+    source: B2
+  - label: Existing inspection pilot
+    value: BMW describes GenAI4Q tailored quality-check recommendations at Plant Regensburg as a pilot.
+    source: B3
+  - label: Existing virtual planning
+    value: BMW says Virtual Factory applications are being scaled across digital twins of more than 30 production sites.
+    source: B4
+  - label: Existing maintenance assistant
+    value: BMW describes Factory Genius as a Dingolfing maintenance-assistant pilot intended as a basis for wider use.
+    source: B5
+sources:
+  B1:
+    title: Artificial Intelligence at the BMW Group
+    publisher: BMW Group
+    url: https://www.bmwgroup.com/en/innovation/artificial-intelligence.html
+    accessed: '2026-11-14'
+  B2:
+    title: Smart maintenance using artificial intelligence
+    publisher: BMW Group
+    url: https://newsroom.bmwgroup.com/global/smart-maintenance-using-artificial-intelligence/
+    accessed: '2026-11-14'
+  B3:
+    title: Artificial intelligence as a quality booster
+    publisher: BMW Group PressClub
+    url: https://www.press.bmwgroup.com/global/article/detail/T0449729EN/artificial-intelligence-as-a-quality-booster
+    accessed: '2026-11-14'
+  B4:
+    title: BMW Group scales Virtual Factory
+    publisher: BMW Group PressClub
+    url: https://www.press.bmwgroup.com/global/article/detail/T0450699EN/bmw-group-scales-virtual-factory
+    accessed: '2026-11-14'
+  B5:
+    title: Just ask Factory Genius — how AI helps maintain manufacturing equipment
+    publisher: BMW Group PressClub
+    url: https://www.press.bmwgroup.com/global/article/detail/T0451072EN
+    accessed: '2026-11-14'
+  B6:
+    title: BMW iFACTORY — Tomorrow's Production
+    publisher: BMW Group
+    url: https://www.bmwgroup.com/en/unternehmen/produktion.html
+    accessed: '2026-11-14'
+  B7:
+    title: BMW Group Report 2025
+    publisher: BMW Group
+    url: https://www.bmwgroup.com/en/report/2025/downloads/BMW-Group-Report-2025-en.pdf
+    accessed: '2026-11-14'

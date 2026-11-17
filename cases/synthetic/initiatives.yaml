@@ -1,0 +1,83 @@
+initiatives:
+- id: A
+  library_ref: ''
+  name: Synthetic investment A
+  function: Synthetic operations
+  status: new
+  description: Synthetic analytical reference investment.
+  public_basis: No real company evidence.
+  sources: []
+  site_options:
+  - 1
+  - 2
+  capex_per_site: 60
+  opex_per_site: 10
+  benefit_per_site: 80
+  months_to_value: 0
+  p_success: 1
+  fte_per_site: 1
+  central_fte: 0
+  kpi: Synthetic throughput
+  ai_act: &id001
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false
+  platform_capex: 0
+  ramp_years: 0
+  fail_benefit_share: 0
+- id: B
+  library_ref: ''
+  name: Synthetic investment B
+  function: Synthetic operations
+  status: new
+  description: Synthetic analytical reference investment.
+  public_basis: No real company evidence.
+  sources: []
+  site_options:
+  - 1
+  - 2
+  capex_per_site: 60
+  opex_per_site: 10
+  benefit_per_site: 70
+  months_to_value: 0
+  p_success: 1
+  fte_per_site: 1
+  central_fte: 0
+  kpi: Synthetic throughput
+  ai_act: *id001
+  platform_capex: 0
+  ramp_years: 0
+  fail_benefit_share: 0
+- id: C
+  library_ref: ''
+  name: Synthetic investment C
+  function: Synthetic operations
+  status: new
+  description: Synthetic analytical reference investment.
+  public_basis: No real company evidence.
+  sources: []
+  site_options:
+  - 1
+  - 2
+  capex_per_site: 60
+  opex_per_site: 10
+  benefit_per_site: 60
+  months_to_value: 0
+  p_success: 1
+  fte_per_site: 1
+  central_fte: 0
+  kpi: Synthetic throughput
+  ai_act: *id001
+  platform_capex: 0
+  ramp_years: 0
+  fail_benefit_share: 0

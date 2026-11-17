@@ -1,0 +1,14 @@
+schema_version: 1
+claims:
+  - id: published_footprint
+    text: DHL Supply Chain reports automation and AI deployments at scale; the case does not assume a greenfield rollout.
+    source_ids: [S2, S3]
+assumptions:
+  - id: retained_benefit
+    rationale: Modeled labor and integration benefits require confirmation against customer contracts and existing activity.
+    owner: Unknown; DHL Supply Chain finance and operations review needed
+    status: hypothetical
+  - id: launch_capacity
+    rationale: Eight initiative-site deployments per quarter is an illustrative portfolio limit, not a sourced commitment.
+    owner: Unknown; delivery leadership review needed
+    status: hypothetical

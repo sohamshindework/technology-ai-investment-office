@@ -1,0 +1,116 @@
+schema_version: 1
+case_id: allianz
+industry_id: insurance
+scope:
+  company: Allianz
+  operating_unit: Hypothetical German property and casualty claims and customer-service teams
+  geography: Germany; selected eligible team workflows, not all Allianz entities
+  process: P&C claims intake, handler assistance and customer service
+  beneficiary: Hypothetical local P&C operating unit, subject to finance confirmation
+  exclusions:
+    - Life/health pricing and risk assessment
+    - Underwriting or credit eligibility
+    - Autonomous claim denial or payout decisions
+    - Allianz Group-wide capital allocation
+as_of: '2026-11-14'
+deployment_unit:
+  singular: team-workflow deployment
+  plural: team-workflow deployments
+  definition: One initiative introduced to one eligible claims or service team workflow; a team may receive several initiatives.
+  coverage_noun: team workflows
+accent:
+  primary: '#405F91'
+  support: '#8A9FBE'
+kpis:
+  - id: claims_handling_time
+    initiative_ids: [CLAIM_COPILOT, CLAIM_TRIAGE]
+    label: Average claim handling time
+    unit: hours
+    direction: lower
+    frequency: monthly
+    aggregation: mean_weighted_by_claims
+    weight: claim_count
+    provenance: hypothetical_assumption
+    source_ids: [A1, A3]
+    owner: Unknown; local claims operations owner required
+    baseline: null
+    target: null
+  - id: cost_per_claim
+    initiative_ids: [CLAIM_DOC, CLAIM_COPILOT]
+    label: Direct handling cost per claim
+    unit: EUR/claim
+    direction: lower
+    frequency: monthly
+    aggregation: mean_weighted_by_claims
+    weight: claim_count
+    provenance: hypothetical_assumption
+    source_ids: [A1, A3]
+    owner: Unknown; local claims finance owner required
+    baseline: null
+    target: null
+  - id: claim_exception_rate
+    initiative_ids: [CLAIM_DOC, QUALITY_AUDIT]
+    label: Claims requiring manual exception handling
+    unit: percent_0_100
+    direction: lower
+    frequency: monthly
+    aggregation: ratio_of_totals
+    numerator: claims_with_manual_exception
+    denominator: claims_received
+    provenance: hypothetical_assumption
+    source_ids: [A3]
+    owner: Unknown; local claims quality owner required
+    baseline: null
+    target: null
+  - id: customer_response_time
+    initiative_ids: [SERVICE_KNOWLEDGE, SERVICE_REPLY]
+    label: Time to first customer response
+    unit: minutes
+    direction: lower
+    frequency: weekly
+    aggregation: mean_weighted_by_contacts
+    weight: contact_count
+    provenance: hypothetical_assumption
+    source_ids: [A2]
+    owner: Unknown; local service owner required
+    baseline: null
+    target: null
+  - id: fraud_referral_precision
+    initiative_ids: [FRAUD_ASSIST]
+    label: Investigator-confirmed fraud referral precision
+    unit: percent_0_100
+    direction: higher
+    frequency: monthly
+    aggregation: ratio_of_totals
+    numerator: investigator_confirmed_referrals
+    denominator: referrals_reviewed
+    provenance: hypothetical_assumption
+    source_ids: [A4]
+    owner: Unknown; local investigation owner required
+    baseline: null
+    target: null
+governance:
+  profile_id: insurance_operations_v1
+  profile_version: 1
+  coverage_review: design_reviewed
+  domains: [human_claim_decision, privacy, model_risk, consumer_fairness, ict_resilience, vendor_assurance, workplace]
+  approval_points:
+    - Local claims and service owners confirm scope, claim authority, baseline and retained benefits.
+    - Legal/privacy and insurance model-risk owners review intended use, data, fairness and human oversight.
+    - ICT and vendor owners assess resilience, traceability and third-party dependencies before go-live.
+    - Pilot-gated candidates require local evidence and an explicit committee decision before funding.
+views:
+  portfolio: [contribution, baseline_waterfall, function_value, claims_kpi_scorecard, service_kpi_scorecard]
+  scenarios: [capital_frontier, npv_distribution, scenario_delta]
+  delivery: [quarterly_rollout, quarterly_capacity, planned_benefits]
+decision_notes:
+  rationale: Fund incremental team-workflow coverage only where local baselines, human authority and benefit ownership are confirmed; compare existing Allianz capabilities before contracting.
+  risks:
+    - Public examples from Austria and Australia do not prove German workflow readiness or economics.
+    - Handler, document and service benefits may overlap; the forecast does not deduct overlapping savings.
+    - Personal-data use, fairness, model risk and third-party ICT resilience require local review.
+  approval_points:
+    - Confirm local baseline claim volumes, handling costs and existing tool coverage.
+    - Validate incremental benefits and avoid double-counting across assistants and document automation.
+    - Approve human decision controls, privacy, model risk, ICT resilience and deployment teams.
+  source_ids: [A1, A2, A3, A4, A6]

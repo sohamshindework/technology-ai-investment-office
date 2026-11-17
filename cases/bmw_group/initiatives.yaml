@@ -1,0 +1,206 @@
+# Every monetary range, success rate, rollout package and governance answer is hypothetical.
+# Each increment is one initiative on one eligible production-line workflow, not a unique plant.
+defaults:
+  fail_benefit_share: 0.25
+  ramp_years: 0.75
+  platform_capex: 0
+  ai_act: &internal_ai
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false
+initiatives:
+  - id: LINE_DATA
+    name: Extend line event and equipment-data integration
+    function: Production data
+    status: new
+    description: Connect approved equipment events, quality outcomes and maintenance logs for selected line workflows, with lineage and access controls.
+    public_basis: BMW describes connected production and AIQX; local line integration and remaining gaps are hypothetical.
+    sources: [B1, B6]
+    site_options: [1, 2, 3]
+    capex_per_site: [150, 220, 320]
+    opex_per_site: [30, 45, 70]
+    benefit_per_site: [70, 110, 180]
+    months_to_value: [2, 4, 7]
+    p_success: 0.9
+    fte_per_site: 0.3
+    central_fte: 0.8
+    kpi: Validated line-event completeness (%)
+    ai_act:
+      <<: *internal_ai
+      uses_ai: false
+    assumption_notes: Benefit is avoided manual reconciliation only; downstream downtime and scrap savings belong to their own initiatives.
+  - id: PRED_MAINT
+    name: Extend predictive maintenance to eligible conveyors
+    function: Maintenance
+    status: scale
+    description: Adapt an existing-style condition-monitoring pattern to eligible conveyor workflows with maintenance-owned intervention rules.
+    public_basis: BMW reports predictive conveyor maintenance at Regensburg; further modeled line coverage is hypothetical.
+    sources: [B2, B7]
+    site_options: [1, 2, 3]
+    capex_per_site: [210, 300, 430]
+    opex_per_site: [45, 65, 95]
+    benefit_per_site: [230, 330, 470]
+    months_to_value: [3, 5, 8]
+    p_success: 0.82
+    fte_per_site: 0.37
+    central_fte: 0.8
+    kpi: Unplanned conveyor downtime (hours)
+    requires: [{initiative: LINE_DATA, mode: sites, baseline_sites: 0}]
+    assumption_notes: Monetize only incremental avoided stoppage hours after the existing maintenance baseline; exclude throughput value booked to scheduling.
+  - id: VISION_QA
+    name: Extend AI-assisted visual quality inspection
+    function: Quality
+    status: scale
+    description: Adapt AIQX-style visual checks to eligible line steps, retaining trained inspectors and product-release authority.
+    public_basis: BMW describes AIQX in production and camera-based quality inspection; this proposed line coverage is illustrative.
+    sources: [B1, B6, B7]
+    site_options: [1, 2, 3]
+    capex_per_site: [240, 340, 490]
+    opex_per_site: [55, 80, 115]
+    benefit_per_site: [270, 390, 550]
+    months_to_value: [3, 5, 8]
+    p_success: 0.8
+    fte_per_site: 0.4
+    central_fte: 0.9
+    kpi: First-pass quality yield (%)
+    requires: [{initiative: LINE_DATA, mode: sites, baseline_sites: 0}]
+    assumption_notes: Benefit is confirmed avoided rework on inspected defects, net of inspection labor; exclude paint-surface savings and scrap booked elsewhere.
+  - id: PAINT_QA
+    name: Assess automated paint-surface inspection extension
+    function: Quality
+    status: new
+    description: Evaluate a separate paint-process adaptation after local equipment, safety and image-quality evidence.
+    public_basis: BMW's Regensburg paint-surface inspection is established; this hypothetical extension is not evidence of readiness elsewhere.
+    sources: [B6]
+    site_options: [1, 2]
+    capex_per_site: [350, 500, 720]
+    opex_per_site: [75, 105, 155]
+    benefit_per_site: [300, 450, 650]
+    months_to_value: [5, 8, 12]
+    p_success: 0.66
+    fte_per_site: 0.55
+    central_fte: 1.0
+    kpi: Paint rework per 100 vehicles
+    pilot_gate: {approved: false, min_success_probability: 0.75, evidence: "Local paint-line compatibility, safety and defect-yield evidence are not supplied."}
+    assumption_notes: Paint-specific rework pool only; no vehicle-assembly visual-inspection benefit is shared with VISION_QA.
+  - id: PLAN_TWIN
+    name: Extend virtual planning to selected line changes
+    function: Production planning
+    status: scale
+    description: Use the existing Virtual Factory pattern for specific line-change collision checks and planning packages.
+    public_basis: BMW reports scaling Virtual Factory applications across more than 30 site twins; incremental planning packages here are hypothetical.
+    sources: [B4]
+    site_options: [1, 2, 3]
+    capex_per_site: [160, 235, 340]
+    opex_per_site: [35, 50, 75]
+    benefit_per_site: [150, 225, 325]
+    months_to_value: [2, 4, 7]
+    p_success: 0.86
+    fte_per_site: 0.28
+    central_fte: 0.7
+    kpi: Line-change planning cycle time (days)
+    assumption_notes: Value only avoided physical rework and planning effort for new packages; do not reuse BMW's up-to-30% projection as this local forecast.
+  - id: SCHED_ANALYTICS
+    name: Improve line-level exception scheduling
+    function: Production planning
+    status: new
+    description: Provide planners with constrained recommendations for short-horizon exception recovery; human planners approve sequence changes.
+    public_basis: BMW reports digital planning and production analytics; this exact operating workflow is a hypothetical extension.
+    sources: [B4, B7]
+    site_options: [1, 2, 3]
+    capex_per_site: [185, 260, 380]
+    opex_per_site: [45, 65, 95]
+    benefit_per_site: [160, 240, 350]
+    months_to_value: [3, 5, 8]
+    p_success: 0.73
+    fte_per_site: 0.35
+    central_fte: 0.9
+    kpi: Unplanned schedule recovery time (hours)
+    requires: [{initiative: LINE_DATA, mode: any}]
+    assumption_notes: Book planner effort and changeover efficiency only; exclude downtime, quality and incremental vehicle sales.
+  - id: FACTORY_KNOWLEDGE
+    name: Extend maintenance knowledge assistance
+    function: Maintenance
+    status: scale
+    description: Adapt a source-grounded Factory Genius-style assistant to eligible equipment manuals and incident records, with technician verification.
+    public_basis: BMW describes Factory Genius as a Dingolfing pilot; wider modeled coverage is hypothetical.
+    sources: [B5]
+    site_options: [1, 2, 3]
+    capex_per_site: [120, 175, 260]
+    opex_per_site: [45, 65, 95]
+    benefit_per_site: [125, 190, 280]
+    months_to_value: [3, 5, 8]
+    p_success: 0.77
+    fte_per_site: 0.24
+    central_fte: 0.7
+    kpi: Technician diagnosis time (minutes)
+    ai_act:
+      <<: *internal_ai
+      uses_gpai_model: true
+      interacts_with_people: true
+      generates_synthetic_content: true
+    assumption_notes: Count technician search/diagnosis effort only; exclude the same avoided stoppage hours valued in PRED_MAINT.
+  - id: ENERGY_ANALYTICS
+    name: Extend line energy and process-loss analytics
+    function: Production efficiency
+    status: new
+    description: Identify avoidable process energy and idle-state losses for approved operating windows.
+    public_basis: BMW describes connected factory data and process optimization; this local measurement and opportunity are hypothetical.
+    sources: [B6, B7]
+    site_options: [1, 2, 3]
+    capex_per_site: [130, 190, 280]
+    opex_per_site: [30, 45, 70]
+    benefit_per_site: [110, 170, 250]
+    months_to_value: [3, 5, 8]
+    p_success: 0.75
+    fte_per_site: 0.26
+    central_fte: 0.7
+    kpi: Process energy per vehicle (kWh)
+    requires: [{initiative: LINE_DATA, mode: sites, baseline_sites: 0}]
+    assumption_notes: Only metered energy savings; exclude scrap, throughput and carbon-credit value.
+  - id: DEFECT_TRACE
+    name: Extend defect traceability and root-cause analytics
+    function: Quality
+    status: new
+    description: Link validated quality events to equipment and process batches for engineer-led root-cause investigation.
+    public_basis: BMW describes AI-supported quality checks and digital traceability; modeled local data links remain hypothetical.
+    sources: [B1, B7]
+    site_options: [1, 2, 3]
+    capex_per_site: [155, 225, 330]
+    opex_per_site: [40, 60, 90]
+    benefit_per_site: [145, 220, 320]
+    months_to_value: [3, 5, 8]
+    p_success: 0.78
+    fte_per_site: 0.31
+    central_fte: 0.8
+    kpi: Root-cause resolution time (days)
+    requires: [{initiative: LINE_DATA, mode: any}]
+    assumption_notes: Book engineering investigation and validated downstream scrap prevention only, excluding defects already caught by VISION_QA.
+  - id: ROBOT_PILOT
+    name: Pilot adaptive handling on one production workflow
+    function: Production automation
+    status: new
+    description: Test a bounded, supervised material-handling use with machine-safety assessment before any production rollout.
+    public_basis: BMW describes research and trials of humanoid or physical AI; this case has no approved production pilot evidence.
+    sources: [B1, B6]
+    site_options: [1, 2]
+    capex_per_site: [420, 600, 850]
+    opex_per_site: [90, 130, 180]
+    benefit_per_site: [320, 480, 700]
+    months_to_value: [6, 10, 15]
+    p_success: 0.58
+    fte_per_site: 0.65
+    central_fte: 1.2
+    kpi: Supervised handling cycle time (minutes)
+    pilot_gate: {approved: false, min_success_probability: 0.75, evidence: "Machine-safety, ergonomics, pilot yield and workforce evidence are not supplied."}
+    assumption_notes: No labor elimination or safety benefit is monetized; any later rollout requires separate approval.

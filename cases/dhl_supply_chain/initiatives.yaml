@@ -1,0 +1,684 @@
+# All economics and questionnaire answers are hypothetical modelling assumptions, not company data or human legal approvals.
+defaults:
+  fail_benefit_share: 0.3
+  ramp_years: 1.0
+  platform_capex: 0
+  ai_act:
+    uses_ai: true
+initiatives:
+- id: INT_LAYER
+  library_ref: L-IT-01
+  name: Extend the robotics integration layer to more sites
+  function: IT / Operations
+  status: scale
+  description: 'Roll the vendor-neutral robotics integration layer out beyond the
+    sites where it is live, so new robots and automation connect to the warehouse
+    management system without custom code.
+
+    '
+  public_basis: Live at 30 sites; DHL plans >100 sites within three years; integrations
+    up to 12x faster.
+  sources:
+  - S4
+  site_options:
+  - 20
+  - 40
+  - 70
+  capex_per_site:
+  - 80
+  - 150
+  - 250
+  opex_per_site:
+  - 30
+  - 50
+  - 80
+  benefit_per_site:
+  - 60
+  - 110
+  - 180
+  months_to_value:
+  - 1
+  - 2
+  - 4
+  ramp_years: 0.5
+  p_success: 0.95
+  fail_benefit_share: 0.5
+  fte_per_site: 0.15
+  central_fte: 1.0
+  kpi: Integration lead time per new automation (weeks)
+  ai_act:
+    uses_ai: false
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false
+  assumption_notes: 'Benefit = avoided custom integration work and faster changes.
+    Enabler: its main value is unlocking the robotics and orchestration rollouts that
+    depend on it.
+
+    '
+- id: AMR_PICK
+  library_ref: L-OPS-01
+  name: Scale collaborative picking robots (AMRs) to additional sites
+  function: Warehouse operations
+  status: scale
+  description: 'Deploy collaborative autonomous mobile robots for picking at further
+    high-volume sites (e-fulfilment, retail, consumer).
+
+    '
+  public_basis: ~8,000 collaborative robots (AR 2025); >9,000 robots and >1.5bn robotic
+    picks (Nov 2026).
+  sources:
+  - S2
+  - S3
+  site_options:
+  - 10
+  - 20
+  - 35
+  capex_per_site:
+  - 250
+  - 400
+  - 700
+  opex_per_site:
+  - 350
+  - 500
+  - 700
+  benefit_per_site:
+  - 700
+  - 1000
+  - 1500
+  months_to_value:
+  - 2
+  - 3
+  - 6
+  p_success: 0.9
+  fail_benefit_share: 0.4
+  fte_per_site: 0.4
+  central_fte: 1.5
+  kpi: Units picked per labour hour
+  requires:
+  - initiative: INT_LAYER
+    mode: sites
+    baseline_sites: 30
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: true
+    processes_personal_data: true
+  assumption_notes: 'Robots-as-a-service: low capex, material opex. Benefit = picking
+    labour productivity at a mid-size site. Pick-rate data per associate can be used
+    to monitor performance, hence the works-council flag.
+
+    '
+- id: STRETCH_UNLOAD
+  library_ref: L-OPS-02
+  name: Scale truck-unloading robots to inbound-heavy sites
+  function: Warehouse operations
+  status: scale
+  description: Add mobile case-handling robots for trailer and container unloading
+    at more inbound-heavy sites.
+  public_basis: 10 million robotic case unloads completed with Boston Dynamics' Stretch
+    (Nov 2026).
+  sources:
+  - S3
+  site_options:
+  - 5
+  - 10
+  - 20
+  capex_per_site:
+  - 500
+  - 750
+  - 1100
+  opex_per_site:
+  - 100
+  - 180
+  - 260
+  benefit_per_site:
+  - 400
+  - 600
+  - 850
+  months_to_value:
+  - 3
+  - 4
+  - 8
+  p_success: 0.85
+  fte_per_site: 0.3
+  central_fte: 1.0
+  kpi: Cases unloaded per hour; unloading injuries
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: true
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false
+  assumption_notes: Benefit = unloading labour and injury-related cost at an inbound-heavy
+    site.
+- id: AI_ORCH
+  library_ref: L-OPS-03
+  name: Roll AI orchestration (digital control centre) out to more sites
+  function: Warehouse operations
+  status: graduate
+  description: 'Extend the AI orchestration layer that links data, people and automation
+    so site leaders rebalance resources against demand. In this case, work is allocated
+    by zone and order demand rather than individual worker behaviour or performance.
+
+    '
+  public_basis: AI orchestration moved into live warehouse operations after a successful
+    proof of concept (Nov 2026).
+  sources:
+  - S3
+  site_options:
+  - 10
+  - 25
+  - 40
+  capex_per_site:
+  - 150
+  - 250
+  - 450
+  opex_per_site:
+  - 60
+  - 100
+  - 150
+  benefit_per_site:
+  - 250
+  - 450
+  - 800
+  months_to_value:
+  - 3
+  - 6
+  - 9
+  p_success: 0.75
+  fte_per_site: 0.3
+  central_fte: 2.5
+  kpi: Labour hours per order; on-time order completion
+  requires:
+  - initiative: INT_LAYER
+    mode: sites
+    baseline_sites: 30
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: true
+    processes_personal_data: true
+  assumption_notes: 'The illustrative benefit assumes 2-5% labour productivity at a
+    mid-size site plus quality gains. Individual worker allocation or evaluation would
+    require a new intended-use review and may change the legal classification, cost
+    and rollout timing.
+
+    '
+- id: INTEL_WORKFLOW
+  library_ref: L-OPS-04
+  name: Move the intelligent workflow (AMRs + packaging automation + WMS) into live
+    operations
+  function: Warehouse operations
+  status: graduate
+  description: 'Connect mobile robots, packaging automation and the WMS to allocate
+    resources to real-time order demand, starting with sites that already run AMRs.
+
+    '
+  public_basis: Intelligent workflow connecting AMRs, packaging automation and WMS
+    is in testing (Nov 2026).
+  sources:
+  - S3
+  site_options:
+  - 5
+  - 10
+  - 20
+  capex_per_site:
+  - 300
+  - 500
+  - 900
+  opex_per_site:
+  - 80
+  - 120
+  - 200
+  benefit_per_site:
+  - 300
+  - 550
+  - 900
+  months_to_value:
+  - 4
+  - 6
+  - 12
+  ramp_years: 1.5
+  p_success: 0.65
+  fail_benefit_share: 0.25
+  fte_per_site: 0.5
+  central_fte: 2.0
+  kpi: Throughput at peak per labour hour
+  requires:
+  - initiative: INT_LAYER
+    mode: sites
+    baseline_sites: 30
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false
+- id: ADAPTIVE_ROBOTICS
+  library_ref: L-OPS-05
+  name: Graduate adaptive AI robotics from pilot to first live sites
+  function: Warehouse operations
+  status: graduate
+  description: 'Move goal-driven robots that interpret their surroundings and choose
+    alternative actions from pilot into live operations at a first set of sites.
+
+    '
+  public_basis: Adaptive AI-powered robotics being piloted (Nov 2026).
+  sources:
+  - S3
+  site_options:
+  - 3
+  - 6
+  - 12
+  capex_per_site:
+  - 700
+  - 1100
+  - 1800
+  opex_per_site:
+  - 150
+  - 250
+  - 400
+  benefit_per_site:
+  - 400
+  - 800
+  - 1400
+  months_to_value:
+  - 6
+  - 9
+  - 15
+  ramp_years: 2.0
+  p_success: 0.55
+  fail_benefit_share: 0.15
+  fte_per_site: 0.6
+  central_fte: 2.5
+  kpi: Tasks automated per site; exception rate
+  requires:
+  - initiative: INT_LAYER
+    mode: sites
+    baseline_sites: 30
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: true
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false
+  assumption_notes: Highest technical uncertainty in the set; wide benefit range,
+    low success probability.
+  pilot_gate:
+    approved: false
+    min_success_probability: 0.81
+    evidence: Pilot evidence not supplied. Threshold is a hypothetical committee rule;
+      inspect calculated break-even separately.
+- id: LABOUR_FORECAST
+  library_ref: L-HR-01
+  name: Site labour-demand forecasting and shift planning
+  function: Operations / HR
+  status: new
+  description: 'Forecast daily and hourly labour demand per site from volume forecasts
+    and plan shifts and agency staff accordingly. Forecasts are aggregate; no individual
+    performance data.
+
+    '
+  public_basis: Not itemised publicly; may overlap with DHL's >1,400 analytics/AI
+    deployments.
+  sources:
+  - S3
+  site_options:
+  - 20
+  - 50
+  - 100
+  platform_capex:
+  - 400
+  - 700
+  - 1100
+  capex_per_site:
+  - 40
+  - 70
+  - 120
+  opex_per_site:
+  - 15
+  - 25
+  - 40
+  benefit_per_site:
+  - 80
+  - 150
+  - 260
+  months_to_value:
+  - 2
+  - 4
+  - 6
+  ramp_years: 0.5
+  p_success: 0.85
+  fail_benefit_share: 0.4
+  fte_per_site: 0.08
+  central_fte: 2.0
+  kpi: Overtime and agency hours as % of total hours
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: true
+- id: IDP_AGENT
+  library_ref: L-FIN-01
+  name: Agentic document processing for shipping and receiving paperwork
+  function: Operations admin / Finance
+  status: new
+  description: 'An LLM-based agent extracts and checks delivery notes, advance shipping
+    notices and proofs of delivery against the WMS, and routes exceptions to a clerk
+    for approval.
+
+    '
+  public_basis: Not itemised publicly.
+  sources: []
+  site_options:
+  - 20
+  - 50
+  - 100
+  platform_capex:
+  - 600
+  - 900
+  - 1500
+  capex_per_site:
+  - 20
+  - 40
+  - 80
+  opex_per_site:
+  - 20
+  - 35
+  - 60
+  benefit_per_site:
+  - 60
+  - 110
+  - 200
+  months_to_value:
+  - 3
+  - 5
+  - 8
+  ramp_years: 0.75
+  p_success: 0.75
+  fail_benefit_share: 0.35
+  fte_per_site: 0.05
+  central_fte: 2.5
+  kpi: Documents processed without manual touch (%)
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: true
+    capable_of_monitoring_employees: false
+    processes_personal_data: true
+- id: CONV_AGENTS
+  library_ref: L-CS-01
+  name: Scale conversational AI agents for associates and customer queries
+  function: Customer service / HR
+  status: scale
+  description: Extend voice and chat agents that answer associate and customer questions
+    to more sites and use cases.
+  public_basis: '>2.5m minutes of interactions with conversational AI agents recorded
+    (Nov 2026).'
+  sources:
+  - S3
+  site_options:
+  - 25
+  - 60
+  - 120
+  platform_capex:
+  - 300
+  - 500
+  - 900
+  capex_per_site:
+  - 10
+  - 20
+  - 40
+  opex_per_site:
+  - 10
+  - 20
+  - 35
+  benefit_per_site:
+  - 30
+  - 60
+  - 110
+  months_to_value:
+  - 2
+  - 3
+  - 5
+  ramp_years: 0.5
+  p_success: 0.85
+  fail_benefit_share: 0.4
+  fte_per_site: 0.03
+  central_fte: 1.5
+  kpi: Queries resolved without human hand-off (%)
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: true
+    generates_synthetic_content: false
+    uses_gpai_model: true
+    capable_of_monitoring_employees: false
+    processes_personal_data: true
+- id: INVENTORY_ANOMALY
+  library_ref: L-OPS-06
+  name: Inventory discrepancy and anomaly detection
+  function: Inventory control
+  status: new
+  description: Flag likely stock discrepancies from WMS transactions to target cycle
+    counts and cut write-offs.
+  public_basis: Not itemised publicly.
+  sources: []
+  site_options:
+  - 20
+  - 50
+  - 100
+  platform_capex:
+  - 300
+  - 500
+  - 800
+  capex_per_site:
+  - 15
+  - 30
+  - 60
+  opex_per_site:
+  - 8
+  - 15
+  - 25
+  benefit_per_site:
+  - 30
+  - 70
+  - 140
+  months_to_value:
+  - 2
+  - 4
+  - 6
+  ramp_years: 0.75
+  p_success: 0.8
+  fte_per_site: 0.04
+  central_fte: 1.5
+  kpi: Inventory adjustments as % of stock value; cycle-count hours
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false
+- id: CV_INSPECTION
+  library_ref: L-QA-01
+  name: Camera-based outbound damage and label inspection
+  function: Quality
+  status: new
+  description: Cameras at outbound check parcels and pallets for damage and label
+    errors before dispatch.
+  public_basis: Not itemised publicly.
+  sources: []
+  site_options:
+  - 10
+  - 25
+  - 50
+  capex_per_site:
+  - 120
+  - 200
+  - 350
+  opex_per_site:
+  - 25
+  - 40
+  - 60
+  benefit_per_site:
+  - 80
+  - 160
+  - 300
+  months_to_value:
+  - 3
+  - 5
+  - 8
+  p_success: 0.7
+  fte_per_site: 0.15
+  central_fte: 1.5
+  kpi: Damage claims and customer chargebacks per 1,000 shipments
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: true
+    processes_personal_data: true
+  assumption_notes: Cameras also capture associates, hence the works-council and GDPR
+    flags even though workers are not the target.
+- id: PRED_MAINT
+  library_ref: L-OPS-07
+  name: Predictive maintenance for material-handling equipment and automation
+  function: Engineering / Maintenance
+  status: new
+  description: Predict failures of conveyors, sorters and robot fleets from equipment
+    telemetry to cut unplanned downtime.
+  public_basis: Not itemised publicly.
+  sources: []
+  site_options:
+  - 20
+  - 50
+  - 90
+  platform_capex:
+  - 400
+  - 600
+  - 1000
+  capex_per_site:
+  - 40
+  - 70
+  - 120
+  opex_per_site:
+  - 10
+  - 20
+  - 30
+  benefit_per_site:
+  - 50
+  - 110
+  - 200
+  months_to_value:
+  - 4
+  - 6
+  - 10
+  p_success: 0.7
+  fte_per_site: 0.08
+  central_fte: 1.5
+  kpi: Unplanned downtime hours per month
+  ai_act:
+    uses_ai: true
+    emotion_recognition_workplace: false
+    biometric_categorisation_sensitive: false
+    recruitment_selection: false
+    allocates_tasks_individual_behaviour: false
+    monitors_evaluates_workers: false
+    decisions_on_work_terms: false
+    safety_component_regulated_product: false
+    interacts_with_people: false
+    generates_synthetic_content: false
+    uses_gpai_model: false
+    capable_of_monitoring_employees: false
+    processes_personal_data: false

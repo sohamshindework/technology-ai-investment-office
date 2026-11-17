@@ -1,0 +1,12 @@
+[theme]
+base = "light"
+primaryColor = "#276E65"
+backgroundColor = "#F7F8F5"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#24332F"
+font = "Inter"
+[server]
+headless = true
+maxUploadSize = 5
+[browser]
+gatherUsageStats = false

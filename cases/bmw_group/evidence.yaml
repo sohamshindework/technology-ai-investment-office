@@ -1,0 +1,28 @@
+schema_version: 1
+claims:
+  - id: existing_quality_ai
+    text: BMW Group describes AIQX and AI-supported quality inspection in its production system; the case tests incremental eligible line coverage.
+    source_ids: [B1, B6, B7]
+  - id: existing_maintenance
+    text: BMW reports predictive conveyor maintenance at Regensburg and a separate Factory Genius pilot at Dingolfing.
+    source_ids: [B2, B5]
+  - id: existing_planning
+    text: BMW reports Virtual Factory applications across digital twins of more than 30 sites; local incremental packages are not established by that report.
+    source_ids: [B4]
+assumptions:
+  - id: eligible_workflows
+    rationale: Candidate scales represent hypothetical, non-unique line-workflow deployments; no actual site inventory or current coverage is supplied.
+    owner: Unknown; plant production and engineering owners required
+    status: hypothetical
+  - id: incremental_value
+    rationale: Annual benefits must be net of existing BMW systems and partitioned across downtime, rework, planning, labor and energy pools.
+    owner: Unknown; production finance and quality owners required
+    status: hypothetical
+  - id: capacity
+    rationale: Three launches per quarter and annual engineering FTE limits are illustrative and require a real change-window plan.
+    owner: Unknown; manufacturing delivery owner required
+    status: hypothetical
+  - id: pilot_readiness
+    rationale: Paint inspection and adaptive handling remain blocked pending local technical, safety and quality evidence.
+    owner: Unknown; pilot sponsors and investment committee required
+    status: hypothetical

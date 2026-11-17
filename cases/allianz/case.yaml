@@ -1,0 +1,86 @@
+id: allianz
+company: Allianz
+unit: Hypothetical German property and casualty claims and customer-service operating unit
+title: Allianz — Insurance & Financial Services
+question: >-
+  Which incremental claims and customer-service capabilities should a hypothetical
+  German property and casualty operating unit fund over three years, and in what
+  sequence, given limited implementation capacity, documented existing Allianz
+  capabilities, human claim decisions and mandatory governance reviews?
+disclaimer: >-
+  Independent, outside-in case study. The operating-unit boundary, budget,
+  candidate economics, probabilities, deployment teams and recommendation are
+  hypothetical. Public Allianz examples describe specific entities and markets;
+  they do not establish that these capabilities are absent or available in this
+  modeled unit. This is not an Allianz Group-wide allocation or an Allianz plan.
+  The project is not affiliated with or endorsed by Allianz.
+model:
+  currency_unit: EUR k
+  horizon_years: 7
+  rollout_years: 3
+  discount_rate: 0.10
+  budget_by_year: [4000, 3800, 3200]
+  fte_capacity_by_year: [12, 12, 10]
+  risk_aversion: 0.6
+  volume_factor: [0.8, 1.0, 1.12]
+  n_samples: 3000
+  seed: 2027
+  max_sites_per_quarter: 4
+compliance:
+  high_risk_capex: 350
+  high_risk_delay_months: 6
+  product_route_capex: 0
+  transparency_capex: 25
+  works_council_delay_months: 3
+facts:
+  - label: Existing claims copilot
+    value: Allianz Technology launched Insurance Copilot for Austrian motor claims in 2024 and subsequently extended it to property claims; this case models a separate hypothetical local deployment.
+    source: A1
+  - label: Existing employee knowledge assistant
+    value: Allianz reports EKA live in German entities, including Allianz Versicherung; the case evaluates incremental team coverage rather than first invention.
+    source: A2
+  - label: Existing document-based claims automation
+    value: Allianz reports OCR and AI checks for simple P&C claims and a German pet-insurance automation example; neither is this case's claimed baseline.
+    source: A3
+  - label: Human claim authority
+    value: Allianz's Australian Nemo example uses AI agents for claim preparation with a human making the payout decision.
+    source: A4
+  - label: Insurance AI governance context
+    value: EIOPA's 2025 opinion clarifies sectoral AI governance and risk-management expectations, including data governance, fairness and human oversight.
+    source: A6
+sources:
+  A1:
+    title: Smarter claims management, smoother settlements
+    publisher: Allianz
+    url: https://www.allianz.com/en/mediacenter/news/articles/250205-smarter-claims-management-smoother-settlements.html
+    accessed: '2026-11-14'
+  A2:
+    title: Enterprise Knowledge Assistant enhances call center productivity
+    publisher: Allianz
+    url: https://www.allianz.com/en/mediacenter/news/articles/250207-allianz-ai-enterprise-knowledge-assistant-enhances-productivity.html
+    accessed: '2026-11-14'
+  A3:
+    title: Responsible use of AI at Allianz
+    publisher: Allianz
+    url: https://www.allianz.com/en/mediacenter/news/articles/260318-responsible-use-of-ai-at-allianz.html
+    accessed: '2026-11-14'
+  A4:
+    title: How agentic AI is transforming insurance claims processing
+    publisher: Allianz
+    url: https://www.allianz.com/en/mediacenter/news/articles/251103-when-the-storm-clears-so-should-the-claim-queue.html
+    accessed: '2026-11-14'
+  A5:
+    title: Allianz Group Annual Report 2025, consumers and end-users section
+    publisher: Allianz
+    url: https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf
+    accessed: '2026-11-14'
+  A6:
+    title: Opinion on Artificial Intelligence governance and risk management
+    publisher: EIOPA
+    url: https://www.eiopa.europa.eu/publications/opinion-artificial-intelligence-governance-and-risk-management_en
+    accessed: '2026-11-14'
+  A7:
+    title: Allianz and Anthropic global AI partnership
+    publisher: Allianz
+    url: https://www.allianz.com/en/mediacenter/news/media-releases/260109-allianz-and-anthropic-forge-global-partnership.html
+    accessed: '2026-11-14'

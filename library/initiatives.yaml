@@ -1,0 +1,100 @@
+# Industry-agnostic initiative library.
+# A case picks entries from here, then adds company-specific public evidence and hypothetical
+# economics. No numbers live here: costs and benefits depend on the company.
+# Fields: id, name, function, type, value_levers, kpis, prerequisites, ai_act_triggers
+# ai_act_triggers lists the screening questions most likely to be "yes" (see invest_engine/ai_act.py).
+
+initiatives:
+# ---------------- Operations / supply chain ----------------
+- {id: L-OPS-01, name: Collaborative mobile robots for picking/handling, function: Operations, type: robotics,
+   value_levers: [labour productivity, throughput, ergonomics], kpis: [units per labour hour],
+   prerequisites: [L-IT-01], ai_act_triggers: [capable_of_monitoring_employees]}
+- {id: L-OPS-02, name: Autonomous loading/unloading robots, function: Operations, type: robotics,
+   value_levers: [labour, injury reduction], kpis: [cases per hour, injury rate],
+   prerequisites: [], ai_act_triggers: [safety_component_regulated_product]}
+- {id: L-OPS-03, name: AI orchestration / digital control tower for sites, function: Operations, type: AI,
+   value_levers: [labour balancing, service level], kpis: [labour hours per order, on-time completion],
+   prerequisites: [L-IT-01, L-DATA-01], ai_act_triggers: [allocates_tasks_individual_behaviour, capable_of_monitoring_employees]}
+- {id: L-OPS-04, name: Event-driven workflow across automation and execution systems, function: Operations, type: automation,
+   value_levers: [throughput, flexibility at peak], kpis: [peak throughput per labour hour], prerequisites: [L-IT-01], ai_act_triggers: []}
+- {id: L-OPS-05, name: Adaptive / goal-driven robotics (physical AI), function: Operations, type: robotics,
+   value_levers: [automation of variable tasks], kpis: [tasks automated, exception rate],
+   prerequisites: [L-IT-01], ai_act_triggers: [safety_component_regulated_product]}
+- {id: L-OPS-06, name: Inventory anomaly and discrepancy detection, function: Operations, type: AI,
+   value_levers: [write-offs, count labour], kpis: [inventory adjustments %], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-OPS-07, name: Predictive maintenance for equipment, function: Engineering, type: AI,
+   value_levers: [downtime, maintenance cost], kpis: [unplanned downtime], prerequisites: [L-DATA-02], ai_act_triggers: []}
+- {id: L-OPS-08, name: Demand forecasting for planning, function: Supply chain, type: AI,
+   value_levers: [inventory, service level], kpis: [forecast error, stock cover], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-OPS-09, name: Route and load optimisation, function: Transport, type: optimisation,
+   value_levers: [km, fuel, CO2], kpis: [cost per drop, utilisation], prerequisites: [], ai_act_triggers: []}
+- {id: L-OPS-10, name: Digital twin for network/site design, function: Supply chain, type: analytics,
+   value_levers: [capex avoidance, design speed], kpis: [design cycle time], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-OPS-11, name: Supplier risk monitoring, function: Procurement, type: AI,
+   value_levers: [disruption avoidance], kpis: [disruptions detected early], prerequisites: [], ai_act_triggers: [uses_gpai_model]}
+# ---------------- Quality / engineering ----------------
+- {id: L-QA-01, name: Computer-vision quality inspection, function: Quality, type: AI,
+   value_levers: [defects, claims], kpis: [defects per 1,000], prerequisites: [], ai_act_triggers: [capable_of_monitoring_employees]}
+- {id: L-QA-02, name: Root-cause analytics for quality issues, function: Quality, type: analytics,
+   value_levers: [scrap, rework], kpis: [first-pass yield], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-ENG-01, name: GenAI engineering knowledge assistant, function: R&D, type: GenAI,
+   value_levers: [engineering hours], kpis: [time to answer], prerequisites: [L-DATA-03], ai_act_triggers: [uses_gpai_model]}
+- {id: L-ENG-02, name: Simulation surrogate models, function: R&D, type: AI,
+   value_levers: [design iterations], kpis: [simulation time], prerequisites: [], ai_act_triggers: []}
+# ---------------- Finance / admin ----------------
+- {id: L-FIN-01, name: Agentic document processing with human approval, function: Finance/admin, type: GenAI,
+   value_levers: [admin hours, error rate], kpis: [straight-through rate], prerequisites: [], ai_act_triggers: [uses_gpai_model]}
+- {id: L-FIN-02, name: Accounts-payable exception handling agent, function: Finance, type: GenAI,
+   value_levers: [AP cost, late fees], kpis: [touchless invoice %], prerequisites: [], ai_act_triggers: [uses_gpai_model]}
+- {id: L-FIN-03, name: Cash-flow and working-capital forecasting, function: Finance, type: AI,
+   value_levers: [working capital], kpis: [forecast error], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-FIN-04, name: Spend analytics and contract leakage detection, function: Procurement, type: analytics,
+   value_levers: [savings capture], kpis: [leakage %], prerequisites: [], ai_act_triggers: []}
+# ---------------- Commercial / customer ----------------
+- {id: L-COM-01, name: Pricing and quote optimisation, function: Commercial, type: analytics,
+   value_levers: [margin, win rate], kpis: [margin, win rate], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-COM-02, name: Churn / renewal risk prediction for accounts, function: Commercial, type: AI,
+   value_levers: [retention], kpis: [renewal rate], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-COM-03, name: GenAI sales proposal assistant, function: Commercial, type: GenAI,
+   value_levers: [bid cost, cycle time], kpis: [proposal cycle time], prerequisites: [L-DATA-03], ai_act_triggers: [uses_gpai_model, generates_synthetic_content]}
+- {id: L-CS-01, name: Conversational AI agents for customers/employees, function: Customer service, type: GenAI,
+   value_levers: [contact cost, availability], kpis: [containment rate], prerequisites: [], ai_act_triggers: [interacts_with_people, uses_gpai_model]}
+- {id: L-CS-02, name: Agent-assist for service staff, function: Customer service, type: GenAI,
+   value_levers: [handle time], kpis: [average handle time], prerequisites: [L-DATA-03], ai_act_triggers: [uses_gpai_model]}
+# ---------------- HR / workforce ----------------
+- {id: L-HR-01, name: Aggregate labour-demand forecasting and shift planning, function: HR/Operations, type: AI,
+   value_levers: [overtime, agency spend], kpis: [overtime %], prerequisites: [L-OPS-08], ai_act_triggers: [processes_personal_data]}
+- {id: L-HR-02, name: CV screening / candidate ranking, function: HR, type: AI,
+   value_levers: [time to hire], kpis: [time to hire], prerequisites: [], ai_act_triggers: [recruitment_selection]}
+- {id: L-HR-03, name: Skills inventory and internal mobility matching, function: HR, type: AI,
+   value_levers: [retention, hiring cost], kpis: [internal fill rate], prerequisites: [], ai_act_triggers: [decisions_on_work_terms]}
+- {id: L-HR-04, name: Safety analytics from incident data, function: HSE, type: analytics,
+   value_levers: [injuries], kpis: [lost-time injury rate], prerequisites: [], ai_act_triggers: []}
+# ---------------- IT / data / security ----------------
+- {id: L-IT-01, name: Integration layer between execution systems and automation, function: IT, type: platform,
+   value_levers: [integration speed, vendor flexibility], kpis: [integration lead time], prerequisites: [], ai_act_triggers: []}
+- {id: L-IT-02, name: AIOps incident triage for IT operations, function: IT, type: GenAI,
+   value_levers: [MTTR, on-call load], kpis: [mean time to resolve], prerequisites: [L-DATA-02], ai_act_triggers: [uses_gpai_model]}
+- {id: L-IT-03, name: Developer productivity tooling (code assistants), function: IT, type: GenAI,
+   value_levers: [delivery speed], kpis: [lead time for changes], prerequisites: [], ai_act_triggers: [uses_gpai_model]}
+- {id: L-IT-04, name: Data-sovereignty and third-party data-flow monitoring, function: IT security, type: analytics,
+   value_levers: [compliance risk], kpis: [non-EU flows detected], prerequisites: [], ai_act_triggers: [processes_personal_data]}
+- {id: L-DATA-01, name: Governed operational data platform, function: Data, type: platform,
+   value_levers: [enables analytics], kpis: [data products in use], prerequisites: [], ai_act_triggers: []}
+- {id: L-DATA-02, name: Telemetry / IoT data pipeline, function: Data, type: platform,
+   value_levers: [enables predictive use cases], kpis: [assets connected], prerequisites: [], ai_act_triggers: []}
+- {id: L-DATA-03, name: Enterprise knowledge retrieval (RAG) platform, function: Data, type: GenAI platform,
+   value_levers: [enables GenAI use cases], kpis: [use cases on platform], prerequisites: [], ai_act_triggers: [uses_gpai_model]}
+# ---------------- Sustainability / risk ----------------
+- {id: L-ESG-01, name: Emissions measurement and reporting automation, function: Sustainability, type: analytics,
+   value_levers: [reporting effort, compliance], kpis: [reporting cycle time], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-ESG-02, name: Energy optimisation of sites, function: Facilities, type: AI,
+   value_levers: [energy cost, CO2], kpis: [kWh per unit], prerequisites: [L-DATA-02], ai_act_triggers: []}
+- {id: L-RISK-01, name: Fraud / claims anomaly detection, function: Finance/Insurance, type: AI,
+   value_levers: [loss avoidance], kpis: [fraud detected], prerequisites: [L-DATA-01], ai_act_triggers: []}
+- {id: L-RISK-02, name: Regulatory change monitoring assistant, function: Legal/Compliance, type: GenAI,
+   value_levers: [compliance effort], kpis: [time to impact assessment], prerequisites: [L-DATA-03], ai_act_triggers: [uses_gpai_model]}
+- {id: L-RISK-03, name: Workplace emotion/stress detection from face or voice, function: HR, type: AI,
+   value_levers: [], kpis: [], prerequisites: [],
+   ai_act_triggers: [emotion_recognition_workplace],
+   note: "Kept as a screening test case: prohibited under AI Act Art. 5(1)(f); never fund."}
