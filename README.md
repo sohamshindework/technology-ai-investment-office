@@ -4,6 +4,10 @@
 
 An interactive technology investment decision platform that compares competing initiatives, optimizes portfolios under financial and resource constraints, plans quarterly delivery, and tracks benefits against targets to support management decisions.
 
+[Launch the live Streamlit application](https://technology-ai-investment-office.streamlit.app/)
+
+The public deployment is an illustrative, session-local demonstration. It requires no secrets or external service credentials, does not persist user uploads or benefit observations, and should not be used for confidential or production data.
+
 Soham Shinde built a reusable Python engine and a four-page Streamlit application that:
 
 - values quarterly investment cash flows under uncertainty;
